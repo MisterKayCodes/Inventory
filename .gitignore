@@ -1,0 +1,78 @@
+# General Python ignores
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env/
+.env.bak/
+.envrc
+ENV/
+env/
+.venv/
+
+# Distribution / packaging
+build/
+Dist/
+*.egg-info/
+*.egg
+*.whl
+pip-wheel-metadata/
+*.manifest
+*.spec
+
+# IDE / editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Pytest cache & coverage
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+*.coverage
+*.gcov
+
+# MyPy cache
+.mypy_cache/
+.dmypy.json
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment variable files (contain secrets)
+.env
+.env.*
+
+# Alembic migration scripts (ignore compiled files)
+alembic/versions/*.pyc
+
+# SQLite / other DB files (ignore dev DB, keep production config)
+*.sqlite3
+*.db
+inventory.db
+zilly.db
+
+# Log files
+*.log
+logs/
+
+# Misc temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Secrets / config that should not be pushed
+config.py?.local
+
