@@ -114,7 +114,7 @@ Future endpoints (Phases 6-7) will cover the React frontend UI.
 ## Environment Variables
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `DATABASE_URL` | Full SQLAlchemy database URL (PostgreSQL). If unset, falls back to SQLite. | `sqlite:///./zilly.db` |
+| `DATABASE_URL` | Full SQLAlchemy database URL (PostgreSQL). If unset, falls back to SQLite. | `sqlite:///./inventory.db` |
 | `SECRET_KEY` | JWT signing secret. Must be a long random string. | `"super-secret-key"` (change for production) |
 | `ACCESS_TOKEN_EXPIRE_MINUTES` | Token lifetime. | `30` |
 
@@ -152,3 +152,25 @@ MIT – feel free to use, modify, and share.
 ---
 
 *This README lives in `docs/README.md` and will be the single source of truth for the project. Keep it up‑to‑date as you add new phases, endpoints, or deployment steps.*
+
+## Mobile testing
+
+When testing on a phone or other device, you need the frontend to listen on all interfaces and point to the backend via your local IP.
+
+1. **Create a `.env` in `frontend/`** (already done) with:
+   ```env
+   VITE_API_URL=http://192.168.0.100:8000
+   ```
+2. **Run the backend** so it’s reachable from the network:
+   ```powershell
+   cd backend
+   uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+   ```
+3. **Start the Vite dev server** with host `0.0.0.0`:
+   ```powershell
+   cd frontend
+   npm run dev -- --host 0.0.0.0
+   ```
+4. Open the URL shown (e.g., `http://192.168.0.100:5173`) on your phone’s browser.
+
+Now the app will communicate with the backend using the correct IP, and you can test the full flow on a mobile device.
