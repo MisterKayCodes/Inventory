@@ -95,8 +95,12 @@ All tests currently pass (`4 passed`). Add new tests as you implement further ph
 | GET  | `/products/{id}` | Get product details | ✅ |
 | PUT  | `/products/{id}` | Update product (owner‑only) | ✅ (owner) |
 | DELETE| `/products/{id}` | Delete product (owner‑only) | ✅ (owner) |
+| POST | `/transactions/verify` | Verify hardware serial | ✅ (staff) |
+| POST | `/transactions/confirm-sale` | Idempotent sale finalization | ✅ (staff) |
+| GET  | `/dashboard/overview` | Dashboard metrics for owner's shops | ✅ (owner) |
+| GET  | `/transactions` | List transaction history (shop‑scoped) | ✅ (owner) |
 
-Future endpoints (Phases 4‑5) will be added under `/transactions` and `/admin`.
+Future endpoints (Phases 6-7) will cover the React frontend UI.
 
 ---
 
@@ -122,8 +126,8 @@ Future endpoints (Phases 4‑5) will be added under `/transactions` and `/admi
 | 1 | Foundation & Project Bootstrap | ✅ Done |
 | 2 | Multi‑Tenant Authentication & Onboarding | ✅ Done |
 | 3 | Product & Category CRUD (Inventory Registry API) | ✅ Done |
-| 4 | Verification & Safe‑Sale (Transactions) API | ⏳ Not started |
-| 5 | Owner Dashboard & Metrics API | ⏳ Not started |
+| 4 | Verification & Safe‑Sale (Transactions) API | ✅ Done |
+| 5 | Owner Dashboard & Metrics API | ✅ Done |
 | 6 | Frontend Shell & Glassmorphic UI (Vite + React) | ⏳ Not started |
 | 7 | Frontend Page Assembly (connect UI to backend) | ⏳ Not started |
 | 8 | E2E Verification & Deployment Guide | ⏳ Not started |

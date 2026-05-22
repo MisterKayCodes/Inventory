@@ -80,8 +80,8 @@ Verification: Simulate two concurrent HTTP requests with the exact same idempote
 📊 Phase 5: Owner Dashboard & Metrics API
 Goal: Provide owners with daily sales summaries, transaction history, and error logs.
 
-[NEW] admin.py API Router:
-GET /admin/dashboard (Returns total sales count, revenue, and verification error metrics for the owner's shops)
+[NEW] owner.py API Router:
+GET /owner/dashboard (Returns total sales count, revenue, and verification error metrics for the owner's shops)
 GET /transactions (Returns paginated historical records, filtered strictly by owner)
 Verification: Verify the dashboard correctly filters and aggregates data across multiple shops owned by the same user.
 
@@ -143,3 +143,12 @@ FastAPI Tests: Use pytest and httpx.AsyncClient to automatically run API routes 
 Concurrent Testing: Write a lightweight script in scratch/test_concurrency.py that triggers multiple requests simultaneously to guarantee database-level safety.
 Manual Verification
 Walkthrough Verification: Perform live tests of the web interface to verify camera simulation, forms, dashboard statistics, and overall user flow.
+
+
+
+
+
+
+
+
+MAKE SURE TO UPDATE DONE MD IF ANY PHASE HERE IN PLAN MD IS DONE
