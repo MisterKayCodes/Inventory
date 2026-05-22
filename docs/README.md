@@ -174,3 +174,10 @@ When testing on a phone or other device, you need the frontend to listen on all 
 4. Open the URL shown (e.g., `http://192.168.0.100:5173`) on your phone’s browser.
 
 Now the app will communicate with the backend using the correct IP, and you can test the full flow on a mobile device.
+
+## Frontend Updates
+
+- Added navigation to `/dashboard/overview` after a successful login using `useNavigate` from `react-router-dom`.
+- Cleaned up import order in `src/pages/Login.jsx`: React import first, followed by custom hooks, then third‑party libraries, with a comment describing the ordering.
+- Updated login button to show a loading state and retain the `.btn` class when disabled.
+
