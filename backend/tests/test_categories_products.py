@@ -78,6 +78,7 @@ def test_product_crud(owner_token_and_shop):
         "status": "in_stock",
         "photo_url": None,
         "category_id": category_id,
+        "shop_id": shop_id,
     }
     create_resp = client.post("/products/", json=prod_payload, headers=headers)
     assert create_resp.status_code == 201

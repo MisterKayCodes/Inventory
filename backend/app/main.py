@@ -5,6 +5,7 @@ from app.api.auth import router as auth_router
 from app.api.shops import router as shops_router
 from app.api.categories import router as categories_router
 from app.api.products import router as products_router
+from app.api.transactions import router as transactions_router
 from config import settings
 
 # 1. Initialize Database Tables
@@ -35,6 +36,7 @@ app.add_middleware(
 app.include_router(auth_router)
 app.include_router(shops_router)
 app.include_router(categories_router)
+app.include_router(transactions_router)
 app.include_router(products_router)
 
 @app.get("/")

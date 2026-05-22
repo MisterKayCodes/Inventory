@@ -11,8 +11,8 @@ def test_database_connection():
     Base.metadata.create_all(bind=engine)
     
     # 2. Assert that the database file was physically created on disk
-    # (Since we are in backend/ folder, the default path is ./zilly.db)
-    assert os.path.exists("zilly.db") or os.path.exists("backend/zilly.db")
+    # (Since we are in backend/ folder, the default path is ./inventory.db)
+    assert os.path.exists("inventory.db") or os.path.exists("backend/inventory.db")
     
     # 3. Use SQLAlchemy Inspector to check active connections and metadata
     inspector = inspect(engine)

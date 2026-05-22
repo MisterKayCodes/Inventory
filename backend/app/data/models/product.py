@@ -4,7 +4,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.data.database import Base
 from app.data.models.base import BaseModel
 import enum
-from typing import Optional
+from typing import Optional, List
 
 class ProductStatus(str, enum.Enum):
     IN_STOCK = "in_stock"
@@ -23,6 +23,13 @@ class Product(BaseModel):
     status: Mapped[ProductStatus] = mapped_column(Enum(ProductStatus), nullable=False, default=ProductStatus.IN_STOCK)
     photo_url: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
 
-    # Relationships
-    shop = relationship("Shop", back_populates="products")
-    category = relationship("Category", back_populates="products")
+    # Category relationship
+    category: Mapped["Category"] = relationship("Category", back_populates="products")
+    
+    # Transactions referencing this product
+    transactions: Mapped[List["Transaction"]] = relationship(
+        "Transaction",
+        back_populates="product",
+        cascade="all, delete-orphan"
+    )
+

@@ -21,7 +21,7 @@ def create_product(
     db: Session = Depends(get_db),
 ):
     """Create a new product."""
-    db_product = Product(**payload.model_dump(), shop_id=1)  # TODO: replace with actual shop context
+    db_product = Product(**payload.model_dump())  # use shop_id from payload
     db.add(db_product)
     db.commit()
     db.refresh(db_product)
@@ -60,7 +60,7 @@ def update_product(
     prod = db.query(Product).filter(Product.id == product_id).first()
     if not prod:
         raise HTTPException(status_code=404, detail="Product not found")
-    for key, value in payload.dict(exclude_unset=True).items():
+    for key, value in payload.model_dump(exclude_unset=True).items():
         setattr(prod, key, value)
     db.commit()
     db.refresh(prod)

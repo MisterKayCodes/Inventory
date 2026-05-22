@@ -42,8 +42,10 @@ class Shop(BaseModel):
     )
 
     # Products belonging to this shop
-    products: Mapped[List["Product"]] = relationship(
-        "Product",
+    # Transactions belonging to this shop
+    transactions: Mapped[List["Transaction"]] = relationship(
+        "Transaction",
         back_populates="shop",
         cascade="all, delete-orphan"
     )
+

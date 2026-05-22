@@ -1,3 +1,4 @@
+from datetime import datetime
 from pydantic import BaseModel, Field, HttpUrl, validator, ConfigDict
 from typing import Optional
 from enum import Enum
@@ -16,15 +17,20 @@ class ProductBase(BaseModel):
     status: ProductStatus = Field(default=ProductStatus.in_stock, description="Current status of the product")
     photo_url: Optional[HttpUrl] = Field(None, description="URL of the product image stored on Cloudinary")
     category_id: int = Field(..., description="Foreign key to Category")
+    shop_id: int = Field(..., description="Foreign key to Shop")
     model_config = ConfigDict(from_attributes=True, json_encoders={Decimal: float})
 
 class ProductCreate(ProductBase):
-    pass
+    shop_id: int = Field(..., description="Foreign key to Shop")
+
 
 class ProductRead(ProductBase):
     id: int
-    shop_id: int
-    # Config already handled via model_config above
+    created_at: datetime
+    updated_at: datetime
+    
+    class Config:
+        from_attributes = True
 
 class ProductUpdate(BaseModel):
     brand_model: Optional[str] = None
@@ -33,6 +39,7 @@ class ProductUpdate(BaseModel):
     status: Optional[ProductStatus] = None
     photo_url: Optional[HttpUrl] = None
     category_id: Optional[int] = None
+    shop_id: Optional[int] = None
     
     @validator("status", pre=True, always=True)
     def validate_status(cls, v):
