@@ -6,6 +6,7 @@ from app.api.shops import router as shops_router
 from app.api.categories import router as categories_router
 from app.api.products import router as products_router
 from app.api.transactions import router as transactions_router
+from app.api.owner import router as owner_router
 from config import settings
 
 # 1. Initialize Database Tables
@@ -38,6 +39,7 @@ app.include_router(shops_router)
 app.include_router(categories_router)
 app.include_router(transactions_router)
 app.include_router(products_router)
+app.include_router(owner_router)
 
 @app.get("/")
 def read_root():
