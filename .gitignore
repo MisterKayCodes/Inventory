@@ -1,7 +1,12 @@
-# General Python ignores
+# ===================
+# Python Ignores
+# ===================
+
+# Byte-compiled / optimized files
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyo
 
 # Virtual environments
 venv/
@@ -11,10 +16,21 @@ venv/
 ENV/
 env/
 .venv/
+ENV3/
+env3/
 
 # Distribution / packaging
 build/
-Dist/
+dist/                    # Fixed: lowercase 'd'
+develop-eggs/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
 *.egg-info/
 *.egg
 *.whl
@@ -22,19 +38,11 @@ pip-wheel-metadata/
 *.manifest
 *.spec
 
-# IDE / editor files
-.idea/
-.vscode/
-*.sublime-project
-*.sublime-workspace
-*.code-workspace
+# ===================
+# Python Testing
+# ===================
 
-# OS generated files
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Pytest cache & coverage
+# Pytest
 .pytest_cache/
 htmlcov/
 .coverage
@@ -42,37 +50,168 @@ coverage.xml
 *.cover
 *.coverage
 *.gcov
+.tox/
+.tox
+.nox/
+.hypothesis/
 
-# MyPy cache
+# MyPy
 .mypy_cache/
 .dmypy.json
+dmypy.json
+.pyre/
+.pytype/
 
-# Jupyter notebook checkpoints
+# ===================
+# IDE / Editor Files
+# ===================
+
+# VSCode
+.idea/
+.vscode/
+*.code-workspace
+.vscode-test/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# PyCharm
+.idea/
+*.iml
+.DS_Store
+
+# Jupyter
 .ipynb_checkpoints/
+*.ipynb_checkpoints
 
-# Environment variable files (contain secrets)
+# ===================
+# OS Generated Files
+# ===================
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ===================
+# Environment & Secrets
+# ===================
+
+# Environment variables
 .env
 .env.*
+!.env.example
+.envrc
+*.env
+.env.local
+.env.*.local
 
-# Alembic migration scripts (ignore compiled files)
-alembic/versions/*.pyc
+# Secrets & Keys
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+secrets/
+credentials/
+secret_key.txt
+*.secret
 
-# SQLite / other DB files (ignore dev DB, keep production config)
+# Database
 *.sqlite3
 *.db
 inventory.db
 zilly.db
+*.sqlite
+*.db3
 
-# Log files
+# Config overrides
+config.py?.local
+settings_local.py
+local_settings.py
+
+# ===================
+# Frontend / Node.js
+# ===================
+
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+frontend/.cache/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
 *.log
 logs/
 
-# Misc temporary files
+# Frontend environment
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+# Frontend build outputs
+*.tsbuildinfo
+frontend/.eslintcache
+frontend/.stylelintcache
+
+# ===================
+# Docker (if added later)
+# ===================
+
+*.pid
+docker-compose.override.yml
+.docker/
+docker-compose.*.yml
+!.dockerignore
+
+# ===================
+# Database Migrations
+# ===================
+
+alembic/versions/*.pyc
+alembic/__pycache__/
+*.pyc
+
+# ===================
+# Misc Temporary Files
+# ===================
+
 *.tmp
 *.bak
+*.backup
 *.swp
 *~
+*.old
+*.orig
+*.log
+*.pid
+*.seed
+*.pid.lock
 
-# Secrets / config that should not be pushed
-config.py?.local
+# ===================
+# Project Specific
+# ===================
 
+# Backup files from wipe_demo.py
+*_backup.sql
+demo_backup.json
+
+# Cloudinary local cache
+.cloudinary/
+
+# SSL certificates (if you add HTTPS locally)
+*.crt
+*.key
+*.csr
