@@ -15,7 +15,7 @@ class ProductBase(BaseModel):
     serial_number: Optional[str] = Field(None, description="Unique serial number / barcode on the box")
     price: float = Field(..., gt=0, description="Price in NGN")
     status: ProductStatus = Field(default=ProductStatus.in_stock, description="Current status of the product")
-    photo_url: Optional[HttpUrl] = Field(None, description="URL of the product image stored on Cloudinary")
+    photo_url: Optional[str] = Field(None, description="URL of the product image stored on Cloudinary")
     category_id: int = Field(..., description="Foreign key to Category")
     shop_id: int = Field(..., description="Foreign key to Shop")
     model_config = ConfigDict(from_attributes=True, json_encoders={Decimal: float})
@@ -37,7 +37,7 @@ class ProductUpdate(BaseModel):
     serial_number: Optional[str] = None
     price: Optional[float] = None
     status: Optional[ProductStatus] = None
-    photo_url: Optional[HttpUrl] = None
+    photo_url: Optional[str] = None
     category_id: Optional[int] = None
     shop_id: Optional[int] = None
     
